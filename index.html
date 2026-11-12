@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alvin Rajendra Rabani — Portfolio | 夏空と海辺の踏切の記録</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+JP:wght@500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serifjp: ['"Noto Serif JP"', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            rei: {
+              sky: '#A9D4F5',
+              skyLight: '#DDF0FC',
+              cloud: '#F8FCFF',
+              navy: '#0E244D',
+              ink: '#153166',
+              sea: '#0C76BE',
+              signal: '#1DA1F2',
+              sand: '#E8DC88',
+              sandLight: '#F6F1C7',
+              danger: '#E11D48'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root {
+      --bg-sky-top: #99CAF0;
+      --bg-sky-mid: #C2E2FA;
+      --bg-sky-bot: #EAF6FF;
+      --ink-main: #0E244D;
+      --ink-muted: #1E3F7A;
+      --sky-text-main: #0E244D;
+      --sky-text-sub: #153166;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --card-sub-bg: rgba(221, 240, 252, 0.65);
+      --card-sand-bg: #F6F1C7;
+      --card-border: #0E244D;
+      --card-shadow: #0E244D;
+      --accent-link: #0C76BE;
+      --rail-line: #0E244D;
+    }
+    body.twilight-mode {
+      --bg-sky-top: #0B152B;
+      --bg-sky-mid: #13274F;
+      --bg-sky-bot: #1D3B70;
+      --ink-main: #F0F7FF;
+      --ink-muted: #BAE6FD;
+      --sky-text-main: #F8FCFF;
+      --sky-text-sub: #BAE6FD;
+      --card-bg: rgba(16, 34, 70, 0.94);
+      --card-sub-bg: rgba(27, 53, 104, 0.85);
+      --card-sand-bg: rgba(30, 58, 110, 0.92);
+      --card-border: #7DD3FC;
+      --card-shadow: #060D1D;
+      --accent-link: #38BDF8;
+      --rail-line: #7DD3FC;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--ink-main);
+      background: linear-gradient(180deg, var(--bg-sky-top) 0%, var(--bg-sky-mid) 48%, var(--bg-sky-bot) 100%);
+      background-attachment: fixed;
+      overflow-x: hidden;
+      transition: background 0.45s ease, color 0.3s ease;
+    }
+    /* Theme-aware typography classes so dark mode texts are bright */
+    .theme-sky-title {
+      color: var(--sky-text-main);
+      transition: color 0.3s ease;
+    }
+    .theme-sky-sub {
+      color: var(--sky-text-sub);
+      transition: color 0.3s ease;
+    }
+    .theme-text-main {
+      color: var(--ink-main);
+      transition: color 0.3s ease;
+    }
+    .theme-text-muted {
+      color: var(--ink-muted);
+      transition: color 0.3s ease;
+    }
+    .theme-link {
+      color: var(--accent-link);
+      transition: color 0.2s ease;
+    }
+    .rei-card {
+      background: var(--card-bg);
+      color: var(--ink-main);
+      border: 2px solid var(--card-border);
+      box-shadow: 4px 4px 0px var(--card-shadow);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+    .rei-card:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 6px 6px 0px var(--card-shadow);
+    }
+    .rei-subcard {
+      background: var(--card-sub-bg);
+      color: var(--ink-main);
+      border: 2px solid var(--card-border);
+      transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+    .rei-sandcard {
+      background: var(--card-sand-bg);
+      color: var(--ink-main);
+      border: 2px solid var(--card-border);
+      transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    }
+    .rei-btn {
+      border: 2px solid var(--card-border);
+      box-shadow: 3px 3px 0px var(--card-shadow);
+      transition: all 0.15s ease;
+    }
+    .rei-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0px var(--card-shadow);
+    }
+    .rei-btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0px var(--card-shadow);
+    }
+    .rei-btn-idle {
+      background: var(--card-bg);
+      color: var(--ink-main);
+    }
+    .rei-btn-active {
+      background: #0E244D;
+      color: #FFFFFF;
+    }
+    body.twilight-mode .rei-btn-active {
+      background: #38BDF8;
+      color: #09152E;
+    }
+    body.twilight-mode .rei-badge-dark {
+      background: #38BDF8;
+      color: #09152E;
+    }
+    .rei-badge-dark {
+      background: #0E244D;
+      color: #FFFFFF;
+    }
+    .rail-timeline {
+      border-left: 4px solid var(--rail-line);
+    }
+    /* Railroad crossing bar hazard stripes */
+    .crossing-bar {
+      background: repeating-linear-gradient(
+        -45deg,
+        #0E244D,
+        #0E244D 16px,
+        #FFFFFF 16px,
+        #FFFFFF 32px
+      );
+      border-top: 2px solid var(--card-border);
+      border-bottom: 2px solid var(--card-border);
+    }
+    .vertical-jp {
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      letter-spacing: 0.2em;
+    }
+    @keyframes blinkLeft {
+      0%, 49% { opacity: 1; filter: drop-shadow(0 0 8px #38BDF8); }
+      50%, 100% { opacity: 0.25; filter: none; }
+    }
+    @keyframes blinkRight {
+      0%, 49% { opacity: 0.25; filter: none; }
+      50%, 100% { opacity: 1; filter: drop-shadow(0 0 8px #38BDF8); }
+    }
+    .signal-left {
+      animation: blinkLeft 1.1s infinite;
+    }
+    .signal-right {
+      animation: blinkRight 1.1s infinite;
+    }
+    @keyframes floatPaper {
+      0% { transform: translateY(0px) translateX(0px) rotate(0deg); opacity: 0; }
+      15% { opacity: 0.85; }
+      85% { opacity: 0.85; }
+      100% { transform: translateY(-110px) translateX(80px) rotate(25deg); opacity: 0; }
+    }
+    .paper-drift {
+      animation: floatPaper 7s ease-in-out infinite;
+    }
+    /* Mobile viewport & touch ergonomics */
+    section[id] {
+      scroll-margin-top: 4.75rem;
+    }
+    button, a {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    @media (max-width: 640px) {
+      .rei-card {
+        box-shadow: 3px 3px 0px var(--card-shadow);
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen selection:bg-sky-400 selection:text-rei-navy relative">
+
+  <!-- Toast Notification (Hidden by default until triggered) -->
+  <div id="toastBox" class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-5 z-50 hidden pointer-events-none">
+    <div class="rei-card px-4 py-2.5 rounded-xl flex items-center gap-2.5 w-fit mx-auto sm:mx-0">
+      <span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-ping shrink-0"></span>
+      <span id="toastMessage" class="text-xs sm:text-sm font-bold theme-text-main"></span>
+    </div>
+  </div>
+
+  <!-- Top Crossing Bar Stripe -->
+  <div class="crossing-bar h-2.5 w-full sticky top-0 z-50"></div>
+
+  <!-- Navigation Header -->
+  <header class="sticky top-2.5 z-40 px-2.5 sm:px-6 pt-2">
+    <nav class="max-w-6xl mx-auto rei-card rounded-xl px-3 sm:px-4 py-2.5 flex items-center justify-between gap-2 sm:gap-3 backdrop-blur-md">
+      <!-- Brand -->
+      <a href="#top" class="flex items-center gap-2.5 sm:gap-3 group min-w-0">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-rei-skyLight border-2 border-rei-navy flex flex-col items-center justify-center shrink-0 group-hover:bg-rei-sand transition overflow-hidden px-1">
+          <span class="text-[7px] font-bold tracking-tight text-rei-navy whitespace-nowrap leading-none">踏切駅</span>
+          <span class="font-serifjp font-bold text-[10px] text-rei-navy whitespace-nowrap leading-none mt-1">ときみ</span>
+        </div>
+        <div class="flex flex-col justify-center min-w-0">
+          <span class="font-extrabold text-xs sm:text-base tracking-tight theme-text-main truncate leading-tight">Alvin Rajendra Rabani</span>
+          <span class="text-[10px] sm:text-[11px] theme-text-muted font-semibold truncate leading-tight mt-0.5">M.Eng @ Kumadai · ML &amp; NLP</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <div class="hidden lg:flex items-center gap-1 text-xs font-bold shrink-0">
+        <a href="#about" class="px-2.5 py-1.5 rounded-lg hover:bg-sky-500/20 transition theme-text-main whitespace-nowrap">01. 概要 About</a>
+        <a href="#projects" class="px-2.5 py-1.5 rounded-lg hover:bg-sky-500/20 transition theme-text-main whitespace-nowrap">02. 研究 Research &amp; ML</a>
+        <a href="#journey" class="px-2.5 py-1.5 rounded-lg hover:bg-sky-500/20 transition theme-text-main whitespace-nowrap">03. 路線図 Journey</a>
+        <a href="#tickets" class="px-2.5 py-1.5 rounded-lg hover:bg-sky-500/20 transition theme-text-main whitespace-nowrap">04. 資格 Credentials</a>
+        <a href="#contact" class="px-2.5 py-1.5 rounded-lg hover:bg-sky-500/20 transition theme-text-main whitespace-nowrap">05. 連絡 Contact</a>
+      </div>
+
+      <!-- Interactive Controls (Sky Mode & Mobile Menu) -->
+      <div class="flex items-center gap-2 shrink-0">
+        <button id="skyModeBtn" type="button" class="rei-btn rei-badge-dark text-xs font-bold px-3 py-1.5 rounded-lg whitespace-nowrap" title="Switch Sky Mode">
+          <span id="skyModeLabel">☀️ 夏空</span>
+        </button>
+
+        <button id="mobileMenuBtn" type="button" class="lg:hidden rei-btn rei-btn-idle px-3 py-1.5 rounded-lg text-xs font-bold" aria-label="Toggle Menu" aria-expanded="false">
+          ☰ Menu
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden lg:hidden max-w-6xl mx-auto mt-2 rei-card rounded-xl p-3 grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-bold">
+      <a href="#about" class="mobile-nav-link p-2.5 rounded-lg rei-subcard hover:opacity-90 flex items-center justify-between"><span>01. About</span><span class="font-serifjp text-[10px] opacity-75">概要</span></a>
+      <a href="#projects" class="mobile-nav-link p-2.5 rounded-lg rei-subcard hover:opacity-90 flex items-center justify-between"><span>02. Research</span><span class="font-serifjp text-[10px] opacity-75">研究</span></a>
+      <a href="#journey" class="mobile-nav-link p-2.5 rounded-lg rei-subcard hover:opacity-90 flex items-center justify-between"><span>03. Journey</span><span class="font-serifjp text-[10px] opacity-75">路線図</span></a>
+      <a href="#tickets" class="mobile-nav-link p-2.5 rounded-lg rei-subcard hover:opacity-90 flex items-center justify-between"><span>04. Credentials</span><span class="font-serifjp text-[10px] opacity-75">資格</span></a>
+      <a href="#contact" class="mobile-nav-link p-2.5 rounded-lg rei-subcard hover:opacity-90 col-span-2 sm:col-span-1 flex items-center justify-between"><span>05. Contact</span><span class="font-serifjp text-[10px] opacity-75">連絡</span></a>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main id="top" class="max-w-6xl mx-auto px-3.5 sm:px-6 pt-4 sm:pt-6 pb-16 sm:pb-20 space-y-10 sm:space-y-14">
+
+    <!-- HERO SECTION -->
+    <section id="about" class="pt-2">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+
+        <!-- Left Column: Intro & Bio -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 rei-card px-3 py-1.5 rounded-2xl sm:rounded-full text-[11px] sm:text-xs font-bold">
+            <span class="px-2 py-0.5 rounded-full rei-badge-dark font-mono shrink-0">STATION 01 // 熊本・日本</span>
+            <span class="theme-text-main leading-snug">M.Eng in Computer Science @ Kumamoto University (Kumadai)</span>
+          </div>
+
+          <div class="space-y-1.5">
+            <p class="font-serifjp text-xs sm:text-sm font-bold tracking-widest theme-sky-sub">
+              アルヴィン・ラジェンドラ・ラバニ — 機械学習・自然言語処理
+            </p>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight theme-sky-title leading-tight">
+              Alvin Rajendra Rabani
+            </h1>
+            <p class="text-sm sm:text-base font-semibold theme-sky-sub leading-snug">
+              Machine Learning &amp; NLP Researcher · Ex-Performance Management &amp; Data Analyst Intern @ PT Midi Utama Indonesia Tbk · Ex-Research Intern @ NAIST
+            </p>
+          </div>
+
+          <div class="rei-card rounded-2xl p-5 space-y-3.5">
+            <div class="flex items-start justify-between gap-4">
+              <p class="text-sm sm:text-base leading-relaxed theme-text-main">
+                Master's student in Engineering (Computer Science) at <a href="https://ewww.kumamoto-u.ac.jp/" target="_blank" rel="noopener noreferrer" class="underline decoration-2 theme-link font-semibold">Kumamoto University (Kumadai)</a> with a <span class="font-semibold">Bachelor of Applied Science in Statistics</span> from <a href="https://uns.ac.id/en/" target="_blank" rel="noopener noreferrer" class="underline decoration-2 theme-link font-semibold">Universitas Sebelas Maret (UNS)</a>. Heavily focused on building and evaluating <span class="font-semibold">Large Language Models (LLMs)</span>, <span class="font-semibold">Natural Language Processing</span>, <span class="font-semibold">Social Media Analysis</span>, <span class="font-semibold">Time Series Analysis</span>, and end-to-end data automation systems.
+              </p>
+              <div class="hidden sm:block vertical-jp font-serifjp text-xs font-bold theme-text-muted border-l-2 border-current/25 pl-2 select-none shrink-0">
+                夏空と海辺の踏切・研究記録
+              </div>
+            </div>
+
+            <!-- Research Interest Pills -->
+            <div class="pt-1 flex flex-wrap gap-2">
+              <span class="text-xs font-bold px-3 py-1 rounded-full rei-subcard">🧠 Large Language Models (LLMs)</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-full rei-subcard">💬 Natural Language Processing</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-full rei-subcard">📊 Social Media &amp; Topic Analysis</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-full rei-subcard">📈 Time Series &amp; Statistical ML</span>
+              <span class="text-xs font-bold px-3 py-1 rounded-full rei-sandcard">⚙️ Business &amp; POS Data Automation</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons (Full-width stack on mobile, inline on sm+) -->
+          <div class="grid grid-cols-1 sm:flex sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3 pt-1">
+            <a href="#projects" class="rei-btn rei-btn-active font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl flex items-center justify-center gap-2">
+              <span>Explore Research &amp; ML Projects</span>
+              <span>→</span>
+            </a>
+            <a href="#journey" class="rei-btn bg-rei-sand text-rei-navy font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl flex items-center justify-center gap-1.5 text-center">
+              <span>🛤️ View Station Timeline</span>
+            </a>
+            <button id="copyEmailHeroBtn" type="button" class="rei-btn rei-btn-idle font-bold text-xs sm:text-sm px-4 py-2.5 rounded-xl flex items-center justify-center gap-1.5">
+              <span>📋</span>
+              <span class="truncate">alvinrabani55@gmail.com</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Column: Original Summer Crossing Vector Artwork & Interactive Card -->
+        <div class="lg:col-span-5">
+          <div class="rei-card rounded-2xl p-4 relative overflow-hidden">
+            <!-- Top Ticket Header -->
+            <div class="flex items-center justify-between border-b-2 border-current/20 pb-2 mb-3 text-xs font-mono font-bold gap-2">
+              <span class="truncate">TOKIMI CROSSING // 踏切第１号</span>
+              <span class="rei-subcard px-2 py-0.5 rounded text-[11px] shrink-0">KUMAMOTO, JP</span>
+            </div>
+
+            <!-- Visual Composition -->
+            <div class="relative rounded-xl border-2 border-rei-navy overflow-hidden bg-rei-sky">
+                            <svg viewBox="0 0 600 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Original Summer Sky and Coastal Railway Crossing Illustration" class="w-full h-auto block select-none">
+                <defs>
+                  <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#6DB7F2" />
+                    <stop offset="52%" stop-color="#A9D6F8" />
+                    <stop offset="100%" stop-color="#E6F5FF" />
+                  </linearGradient>
+                  <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#0E6BB5" />
+                    <stop offset="100%" stop-color="#1E90D6" />
+                  </linearGradient>
+                  <pattern id="hazardStripes" width="24" height="24" patternTransform="rotate(-45 0 0)" patternUnits="userSpaceOnUse">
+                    <rect width="12" height="24" fill="#0E244D" />
+                    <rect x="12" width="12" height="24" fill="#F6F1C7" />
+                  </pattern>
+                </defs>
+
+                <!-- Summer Sky Background -->
+                <rect width="600" height="440" fill="url(#skyGrad)" />
+
+                <!-- Distant Sunlight Halo & Contrail -->
+                <circle cx="470" cy="78" r="46" fill="#FFFFFF" opacity="0.35" />
+                <line x1="70" y1="120" x2="540" y2="32" stroke="#FFFFFF" stroke-width="2.5" stroke-dasharray="6 4" opacity="0.7" />
+
+                <!-- Billowing Summer Cumulonimbus Clouds (入道雲) -->
+                <g fill="#FFFFFF" stroke="#0E244D" stroke-width="2.5">
+                  <circle cx="130" cy="185" r="48" />
+                  <circle cx="185" cy="150" r="62" />
+                  <circle cx="255" cy="135" r="74" />
+                  <circle cx="330" cy="155" r="58" />
+                  <circle cx="395" cy="180" r="50" />
+                  <circle cx="455" cy="165" r="55" />
+                  <circle cx="515" cy="195" r="45" />
+                  <rect x="95" y="180" width="450" height="90" stroke="none" />
+                </g>
+                <!-- Soft Cloud Shading -->
+                <g fill="#DDF0FC">
+                  <ellipse cx="210" cy="215" rx="75" ry="22" />
+                  <ellipse cx="345" cy="220" rx="85" ry="24" />
+                  <ellipse cx="465" cy="225" rx="60" ry="18" />
+                </g>
+
+                <!-- Distant Sea Horizon -->
+                <rect x="0" y="258" width="600" height="72" fill="url(#seaGrad)" stroke="#0E244D" stroke-width="2.5" />
+                <!-- Sparkling Sea Waves -->
+                <g stroke="#BAE6FD" stroke-width="2" stroke-linecap="round" opacity="0.85">
+                  <line x1="40" y1="276" x2="95" y2="276" />
+                  <line x1="140" y1="292" x2="210" y2="292" />
+                  <line x1="280" y1="274" x2="355" y2="274" />
+                  <line x1="420" y1="288" x2="495" y2="288" />
+                  <line x1="310" y1="306" x2="390" y2="306" />
+                  <line x1="80" y1="312" x2="145" y2="312" />
+                </g>
+
+                <!-- Coastal Seawall & Embankment -->
+                <rect x="0" y="325" width="600" height="24" fill="#D5E8F7" stroke="#0E244D" stroke-width="2.5" />
+                <!-- Guardrail Posts -->
+                <g stroke="#0E244D" stroke-width="2.5">
+                  <line x1="45" y1="312" x2="45" y2="325" />
+                  <line x1="115" y1="312" x2="115" y2="325" />
+                  <line x1="185" y1="312" x2="185" y2="325" />
+                  <line x1="255" y1="312" x2="255" y2="325" />
+                  <line x1="325" y1="312" x2="325" y2="325" />
+                  <line x1="395" y1="312" x2="395" y2="325" />
+                  <line x1="465" y1="312" x2="465" y2="325" />
+                  <line x1="535" y1="312" x2="535" y2="325" />
+                  <line x1="0" y1="315" x2="600" y2="315" stroke="#FFFFFF" stroke-width="3" />
+                  <line x1="0" y1="315" x2="600" y2="315" stroke="#0E244D" stroke-width="2" />
+                </g>
+
+                <!-- Railway Track Bed & Sleepers -->
+                <rect x="0" y="349" width="600" height="91" fill="#0E244D" />
+                <rect x="0" y="355" width="600" height="12" fill="#99CAF0" />
+                <rect x="0" y="384" width="600" height="10" fill="#E8DC88" />
+                <!-- Perspective Track Ties -->
+                <g stroke="#0E244D" stroke-width="5">
+                  <line x1="35" y1="350" x2="15" y2="410" />
+                  <line x1="95" y1="350" x2="80" y2="410" />
+                  <line x1="155" y1="350" x2="145" y2="410" />
+                  <line x1="215" y1="350" x2="210" y2="410" />
+                  <line x1="275" y1="350" x2="275" y2="410" />
+                  <line x1="335" y1="350" x2="340" y2="410" />
+                  <line x1="395" y1="350" x2="405" y2="410" />
+                  <line x1="455" y1="350" x2="470" y2="410" />
+                  <line x1="515" y1="350" x2="535" y2="410" />
+                  <line x1="575" y1="350" x2="595" y2="410" />
+                </g>
+
+                <!-- Overhead Catenary Wire & Utility Pole -->
+                <rect x="86" y="45" width="10" height="310" fill="#0E244D" />
+                <line x1="0" y1="68" x2="600" y2="95" stroke="#0E244D" stroke-width="2" />
+                <line x1="0" y1="102" x2="600" y2="118" stroke="#0E244D" stroke-width="1.5" stroke-dasharray="10 4" />
+                <line x1="86" y1="78" x2="148" y2="78" stroke="#0E244D" stroke-width="4" />
+                <line x1="92" y1="108" x2="142" y2="78" stroke="#0E244D" stroke-width="2.5" />
+
+                <!-- Railroad Crossing Mast (踏切警報機) on Right -->
+                <rect x="462" y="75" width="14" height="295" fill="url(#hazardStripes)" stroke="#0E244D" stroke-width="2.5" />
+                <!-- Crossing Warning X Sign (警標) -->
+                <g transform="translate(469, 118)">
+                  <rect x="-42" y="-10" width="84" height="20" rx="4" transform="rotate(38)" fill="#F6F1C7" stroke="#0E244D" stroke-width="3" />
+                  <rect x="-42" y="-10" width="84" height="20" rx="4" transform="rotate(-38)" fill="#F6F1C7" stroke="#0E244D" stroke-width="3" />
+                  <circle cx="0" cy="0" r="6" fill="#0E244D" />
+                </g>
+
+                <!-- Crossing Signal Lights Crossbar -->
+                <rect x="424" y="172" width="90" height="12" rx="4" fill="#0E244D" />
+                <!-- Left & Right Signal Hoods -->
+                <circle cx="436" cy="178" r="15" fill="#0E244D" stroke="#F8FCFF" stroke-width="2" />
+                <circle cx="502" cy="178" r="15" fill="#0E244D" stroke="#F8FCFF" stroke-width="2" />
+                <circle cx="436" cy="178" r="8" fill="#38BDF8" class="signal-left" />
+                <circle cx="502" cy="178" r="8" fill="#38BDF8" class="signal-right" />
+
+                <!-- Direction Indicator Box -->
+                <rect x="448" y="210" width="42" height="24" rx="4" fill="#0E244D" stroke="#F8FCFF" stroke-width="2" />
+                <text x="469" y="226" text-anchor="middle" fill="#E8DC88" font-family="monospace" font-size="12" font-weight="bold">◀ ▶</text>
+
+                <!-- Lowered Crossing Barrier Arm (遮断かん) -->
+                <g transform="rotate(-5 469 278)">
+                  <rect x="55" y="270" width="425" height="16" rx="4" fill="url(#hazardStripes)" stroke="#0E244D" stroke-width="2.5" />
+                </g>
+                <!-- Pivot Housing -->
+                <rect x="454" y="262" width="32" height="36" rx="5" fill="#E8DC88" stroke="#0E244D" stroke-width="3" />
+                <circle cx="470" cy="280" r="7" fill="#0E244D" />
+              </svg>
+
+              <!-- Floating Paper Notes Overlay -->
+              <div class="absolute inset-0 pointer-events-none overflow-hidden">
+                <div class="paper-drift absolute bottom-12 left-1/3 w-3.5 h-2.5 bg-white border border-rei-navy rotate-12"></div>
+                <div class="paper-drift absolute bottom-16 left-1/2 w-3 h-2 bg-white border border-rei-navy -rotate-6" style="animation-delay: 2.2s;"></div>
+                <div class="paper-drift absolute bottom-10 left-2/3 w-3 h-2 bg-white border border-rei-navy rotate-45" style="animation-delay: 4.1s;"></div>
+              </div>
+
+              <!-- Compact Flashing Railroad Signal Badge -->
+              <div class="absolute bottom-3 left-3 bg-white/95 text-rei-navy border-2 border-rei-navy rounded-lg px-2.5 py-1 shadow-[2px_2px_0px_#0E244D] flex items-center gap-2">
+                <div class="flex items-center gap-1 bg-rei-navy px-1.5 py-1 rounded">
+                  <span class="w-2.5 h-2.5 rounded-full bg-sky-400 inline-block signal-left"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-sky-400 inline-block signal-right"></span>
+                </div>
+                <div class="text-[10px] font-bold leading-tight">
+                  <div>夏空踏切</div>
+                  <div class="font-mono text-[9px] text-rei-sea">SIGNAL ACTIVE</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Highlights Footer inside Hero Card -->
+            <div class="mt-3 grid grid-cols-3 gap-2 text-center">
+              <div class="p-2 rounded-lg rei-subcard flex flex-col justify-center">
+                <div class="text-xs sm:text-sm font-extrabold theme-text-main leading-tight">NAIST &amp; Kumadai</div>
+                <div class="text-[10px] font-semibold theme-text-muted mt-0.5">Japan Research</div>
+              </div>
+              <div class="p-2 rounded-lg rei-sandcard flex flex-col justify-center">
+                <div class="text-xs sm:text-sm font-extrabold theme-text-main leading-tight">7+ Systems</div>
+                <div class="text-[10px] font-semibold theme-text-muted mt-0.5">LLM, NLP &amp; BI</div>
+              </div>
+              <div class="p-2 rounded-lg rei-subcard flex flex-col justify-center">
+                <div class="text-xs sm:text-sm font-extrabold theme-text-main leading-tight">3rd Winner</div>
+                <div class="text-[10px] font-semibold theme-text-muted mt-0.5">SSO Statistics '23</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Clean Coastal Railway Crossing Bar Divider -->
+    <div class="py-1">
+      <div class="crossing-bar h-3 w-full rounded-full"></div>
+    </div>
+
+    <!-- SECTION 02: RESEARCH & MACHINE LEARNING PROJECTS SHOWCASE -->
+    <section id="projects" class="space-y-5">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase rei-badge-dark px-3 py-1 rounded-md mb-2">
+            <span>SECTION 02 // 研究と実装プロジェクト</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold theme-sky-title">
+            Featured Research, LLM &amp; Data Systems
+          </h2>
+        </div>
+
+        <!-- Category Filter Buttons -->
+        <div id="projectFilterBar" class="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 w-full md:w-auto">
+          <button type="button" data-filter="all" class="proj-filter-btn rei-btn rei-btn-active text-xs font-bold px-3 py-2 rounded-lg text-center">
+            All Tracks (7)
+          </button>
+          <button type="button" data-filter="llm-nlp" class="proj-filter-btn rei-btn rei-btn-idle text-xs font-bold px-3 py-2 rounded-lg text-center">
+            LLM &amp; NLP (4)
+          </button>
+          <button type="button" data-filter="stat-ml" class="proj-filter-btn rei-btn rei-btn-idle text-xs font-bold px-3 py-2 rounded-lg text-center">
+            Stat ML &amp; RecSys (2)
+          </button>
+          <button type="button" data-filter="data-ops" class="proj-filter-btn rei-btn rei-btn-idle text-xs font-bold px-3 py-2 rounded-lg text-center">
+            BI &amp; Operations (2)
+          </button>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+    </section>
+
+    <!-- SECTION 03: COASTAL RAILWAY TIMELINE (EXPERIENCE & EDUCATION) -->
+    <section id="journey" class="space-y-5">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase rei-badge-dark px-3 py-1 rounded-md mb-2">
+            <span>SECTION 03 // ときみ海岸線・経歴路線図</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold theme-sky-title">
+            Coastal Railway Journey — Experience &amp; Education
+          </h2>
+        </div>
+
+        <!-- Journey Filter Buttons -->
+        <div id="journeyFilterBar" class="flex flex-wrap gap-2 w-full md:w-auto">
+          <button type="button" data-jfilter="all" class="journey-filter-btn rei-btn rei-btn-active text-xs font-bold px-3 py-2 sm:py-1.5 rounded-lg flex-1 sm:flex-initial text-center">
+            All Stops (6)
+          </button>
+          <button type="button" data-jfilter="research" class="journey-filter-btn rei-btn rei-btn-idle text-xs font-bold px-3 py-2 sm:py-1.5 rounded-lg flex-1 sm:flex-initial text-center">
+            Research &amp; Edu
+          </button>
+          <button type="button" data-jfilter="industry" class="journey-filter-btn rei-btn rei-btn-idle text-xs font-bold px-3 py-2 sm:py-1.5 rounded-lg flex-1 sm:flex-initial text-center">
+            Industry &amp; Ops
+          </button>
+        </div>
+      </div>
+
+      <!-- Railway Line Container -->
+      <div class="relative pl-6 sm:pl-9 rail-timeline space-y-5 ml-2" id="journeyTimeline"></div>
+    </section>
+
+    <!-- SECTION 04: TRAIN TICKETS — SKILLS, CERTIFICATIONS, HONORS & LANGUAGES -->
+    <section id="tickets" class="space-y-5">
+      <div>
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase rei-badge-dark px-3 py-1 rounded-md mb-2">
+          <span>SECTION 04 // 硬券切符・スキルと資格</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold theme-sky-title">
+          Station Passes — Technical Skills, Certifications &amp; Honors
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <!-- Left 7 Cols: Certifications & Olympiad Award -->
+        <div class="lg:col-span-7 space-y-4">
+          <!-- Honors Banner Ticket -->
+          <div class="rei-card rounded-2xl p-5">
+            <div class="flex items-center justify-between text-xs font-mono font-bold theme-text-muted border-b-2 border-dashed border-current/25 pb-2 mb-3">
+              <span>🏆 SPECIAL EXPRESS PASS // HONORS &amp; AWARDS</span>
+              <span>2023</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <h3 class="text-base sm:text-lg font-extrabold theme-text-main">
+                  3rd Winner of Sebelas Maret Statistics Olympiad (SSO)
+                </h3>
+                <p class="text-xs sm:text-sm font-semibold theme-text-muted mt-0.5">
+                  Sebelas Maret Statistics Fair (SSF) · Universitas Sebelas Maret (UNS) · 2023
+                </p>
+              </div>
+              <span class="self-start sm:self-center px-3 py-1 rounded-full rei-badge-dark font-mono text-xs font-bold shrink-0">
+                BRONZE MEDALIST 🥉
+              </span>
+            </div>
+          </div>
+
+          <!-- Certifications List -->
+          <div class="rei-card rounded-2xl p-5 space-y-3">
+            <div class="flex items-center justify-between border-b-2 border-current/20 pb-2">
+              <h3 class="font-extrabold text-base sm:text-lg theme-text-main flex items-center gap-2">
+                <span>🎫</span>
+                <span>Verified Certifications &amp; Specializations</span>
+              </h3>
+              <span class="text-xs font-mono font-bold rei-subcard px-2 py-0.5 rounded">5 PASSES</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+              <div class="p-3.5 rounded-xl rei-subcard flex flex-col justify-between">
+                <div>
+                  <div class="text-[10px] font-mono font-bold theme-link">CERT-01 // DEEPLEARNING.AI</div>
+                  <div class="font-bold text-sm theme-text-main mt-0.5">Machine Learning Specialization</div>
+                </div>
+                <div class="text-[11px] font-semibold theme-text-muted mt-2">Supervised, Unsupervised &amp; Recommender Systems</div>
+              </div>
+
+              <div class="p-3.5 rounded-xl rei-subcard flex flex-col justify-between">
+                <div>
+                  <div class="text-[10px] font-mono font-bold theme-link">CERT-02 // DEEPLEARNING.AI</div>
+                  <div class="font-bold text-sm theme-text-main mt-0.5">Natural Language Processing Specialization</div>
+                </div>
+                <div class="text-[11px] font-semibold theme-text-muted mt-2">Classification, Vector Spaces, Sequence &amp; Attention Models</div>
+              </div>
+
+              <div class="p-3.5 rounded-xl rei-subcard flex flex-col justify-between">
+                <div>
+                  <div class="text-[10px] font-mono font-bold theme-link">CERT-03 // DEEPLEARNING.AI</div>
+                  <div class="font-bold text-sm theme-text-main mt-0.5">Mathematics for Machine Learning and Data Science Specialization</div>
+                </div>
+                <div class="text-[11px] font-semibold theme-text-muted mt-2">Linear Algebra, Calculus &amp; Probability for ML</div>
+              </div>
+
+              <div class="p-3.5 rounded-xl rei-subcard flex flex-col justify-between">
+                <div>
+                  <div class="text-[10px] font-mono font-bold theme-link">CERT-04 // INTERNATIONAL LEADERSHIP</div>
+                  <div class="font-bold text-sm theme-text-main mt-0.5">Dise Young Leaders Japan 2</div>
+                </div>
+                <div class="text-[11px] font-semibold theme-text-muted mt-2">Cross-cultural Youth Leadership &amp; Innovation in Japan</div>
+              </div>
+
+              <div class="p-3.5 rounded-xl rei-subcard sm:col-span-2 flex items-center justify-between gap-2">
+                <div>
+                  <div class="text-[10px] font-mono font-bold theme-link">CERT-05 // DICODING / BANGKIT</div>
+                  <div class="font-bold text-sm theme-text-main">Pengenalan ke Logika Pemrograman (Programming Logic 101)</div>
+                </div>
+                <span class="text-xs font-mono font-bold rei-badge-dark px-2.5 py-1 rounded shrink-0">VERIFIED</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 Cols: Skills Matrix & Spoken Languages -->
+        <div class="lg:col-span-5 space-y-4">
+          <!-- Technical & Operational Skills -->
+          <div class="rei-card rounded-2xl p-5 space-y-3">
+            <h3 class="font-extrabold text-base sm:text-lg theme-text-main border-b-2 border-current/20 pb-2">
+              🛠️ Technical &amp; Operational Arsenal
+            </h3>
+            <div class="space-y-3 text-xs">
+              <div>
+                <div class="font-bold theme-text-main mb-1.5">AI, Machine Learning &amp; NLP</div>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2.5 py-1 rounded rei-badge-dark font-semibold">Large Language Models (Gemini, XLM-RoBERTa)</span>
+                  <span class="px-2.5 py-1 rounded rei-subcard font-semibold">BERTopic</span>
+                  <span class="px-2.5 py-1 rounded rei-subcard font-semibold">Relation Extraction</span>
+                  <span class="px-2.5 py-1 rounded rei-subcard font-semibold">Text Summarization</span>
+                  <span class="px-2.5 py-1 rounded rei-subcard font-semibold">MLP &amp; SVM</span>
+                  <span class="px-2.5 py-1 rounded rei-subcard font-semibold">Recommendation Systems</span>
+                  <span class="px-2.5 py-1 rounded rei-subcard font-semibold">OCR &amp; Image Detection</span>
+                </div>
+              </div>
+
+              <div>
+                <div class="font-bold theme-text-main mb-1.5">Analytics, BI &amp; Operations</div>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2.5 py-1 rounded rei-sandcard font-semibold">Looker Studio KPI Dashboards</span>
+                  <span class="px-2.5 py-1 rounded rei-sandcard font-semibold">Google Apps Script Automation</span>
+                  <span class="px-2.5 py-1 rounded rei-sandcard font-semibold">Spreadsheets</span>
+                  <span class="px-2.5 py-1 rounded rei-sandcard font-semibold">Operations Management</span>
+                  <span class="px-2.5 py-1 rounded rei-sandcard font-semibold">MokaPOS Logistics &amp; Accounting</span>
+                  <span class="px-2.5 py-1 rounded rei-sandcard font-semibold">Data Entry &amp; Architecture</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Spoken Languages Card -->
+          <div class="rei-card rounded-2xl p-5 space-y-3">
+            <div class="flex items-center justify-between border-b-2 border-current/20 pb-2">
+              <h3 class="font-extrabold text-base theme-text-main">🗣️ Spoken Languages</h3>
+              <span class="text-[11px] font-mono font-bold theme-link">BILINGUAL</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2.5">
+              <button type="button" data-lang="en" class="lang-btn rei-btn rei-btn-active p-2.5 rounded-xl text-left">
+                <div class="text-xs font-bold">English</div>
+                <div class="text-[10px] opacity-85">Full Professional</div>
+              </button>
+              <button type="button" data-lang="id" class="lang-btn rei-btn rei-btn-idle p-2.5 rounded-xl text-left">
+                <div class="text-xs font-bold">Indonesian</div>
+                <div class="text-[10px] opacity-80">Native / Bilingual</div>
+              </button>
+            </div>
+
+            <div id="langGreetingBox" class="p-3 rounded-xl rei-subcard text-xs font-medium theme-text-main leading-relaxed">
+              "Hello! I'm Alvin, currently researching Machine Learning and NLP at Kumamoto University (Kumadai) in Japan. Let's collaborate!"
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: CONTACT -->
+    <section id="contact" class="space-y-5">
+      <div class="rei-card rounded-2xl p-6">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="space-y-2 max-w-xl">
+            <div class="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase rei-badge-dark px-3 py-1 rounded-md">
+              <span>SECTION 05 // 連絡先・切符売り場</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold theme-text-main">
+              Board the Next Train Together
+            </h2>
+            <p class="text-sm theme-text-muted leading-relaxed">
+              Interested in collaborating on <strong>Natural Language Processing</strong>, <strong>Large Language Models</strong>, <strong>Social Media Analysis</strong>, or <strong>Data Engineering</strong>? Reach out directly via email or LinkedIn.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full md:w-auto md:min-w-[420px]">
+            <div class="p-4 rounded-xl rei-subcard flex items-center justify-between gap-3">
+              <div class="min-w-0">
+                <div class="text-[10px] font-mono font-bold theme-link">DIRECT EMAIL</div>
+                <div class="text-xs sm:text-sm font-bold theme-text-main truncate">alvinrabani55@gmail.com</div>
+              </div>
+              <button type="button" data-copy="alvinrabani55@gmail.com" class="copy-trigger rei-btn rei-btn-idle text-xs font-bold px-3 py-1.5 rounded-lg shrink-0">
+                Copy
+              </button>
+            </div>
+
+            <div class="p-4 rounded-xl rei-sandcard flex items-center justify-between gap-3">
+              <div class="min-w-0">
+                <div class="text-[10px] font-mono font-bold theme-text-muted">LINKEDIN PROFILE</div>
+                <div class="text-xs sm:text-sm font-bold theme-text-main truncate">in/alvin-rajendra-rabani</div>
+              </div>
+              <a href="https://www.linkedin.com/in/alvin-rajendra-rabani" target="_blank" rel="noopener noreferrer" class="rei-btn rei-btn-active text-xs font-bold px-3 py-1.5 rounded-lg shrink-0">
+                Open ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Project Detail Modal -->
+  <div id="projectModal" class="fixed inset-0 z-50 bg-rei-navy/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="rei-card rounded-2xl max-w-xl w-full p-4 sm:p-6 space-y-4 relative max-h-[88vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b-2 border-current/20 pb-3">
+        <span id="modalCode" class="font-mono text-xs font-bold rei-subcard px-2.5 py-1 rounded">TRACK-01</span>
+        <button id="closeModalBtn" type="button" class="rei-btn bg-rei-sand text-rei-navy text-xs font-bold px-3 py-1 rounded-lg">
+          ✕ Close Ticket
+        </button>
+      </div>
+      <div>
+        <div id="modalOrg" class="text-xs font-bold theme-link uppercase tracking-wider">Organization</div>
+        <h3 id="modalTitle" class="text-lg sm:text-xl font-extrabold theme-text-main mt-1">Project Title</h3>
+        <div id="modalPeriod" class="text-xs font-mono theme-text-muted mt-0.5">Period</div>
+      </div>
+      <p id="modalDesc" class="text-sm theme-text-main leading-relaxed"></p>
+      <div>
+        <div class="text-xs font-bold theme-text-main mb-1.5">Key Deliverables &amp; Technical Highlights:</div>
+        <ul id="modalBullets" class="list-disc list-inside text-xs sm:text-sm theme-text-muted space-y-1.5"></ul>
+      </div>
+      <div id="modalTags" class="flex flex-wrap gap-1.5 pt-2 border-t border-current/20"></div>
+    </div>
+  </div>
+
+  <!-- Coastal Horizon Footer -->
+  <footer class="border-t-4 border-rei-navy bg-rei-navy text-white py-8 px-4">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left text-xs">
+      <div class="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
+        <span class="px-2.5 py-1 rounded bg-rei-sand text-rei-navy font-serifjp font-bold shrink-0">夏空踏切</span>
+        <span>© 2026 Alvin Rajendra Rabani · Master of Engineering @ Kumamoto University (Kumadai), Japan</span>
+      </div>
+      <div class="font-mono text-sky-200">
+        Original Summer Sky &amp; Coastal Railway Crossing Theme (夏空・海辺の踏切)
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Logic -->
+  <script>
+    // 1. Portfolio Data: Projects & Research (Years only, no months)
+    const PROJECTS = [
+      {
+        id: 'p1',
+        code: 'TRACK-01 // LLM & HR TECH',
+        category: 'llm-nlp',
+        title: 'End-to-End LLM Organizational Competency Analysis System',
+        org: 'PT Midi Utama Indonesia, Tbk (Kemnaker RI Batch 1)',
+        period: '2025 – 2026 · Tangerang, Indonesia',
+        summary: 'Designed and engineered an automated Large Language Model workflow at PT Midi Utama Indonesia Head Office to evaluate and map organizational competencies at scale.',
+        bullets: [
+          'Architected an end-to-end LLM pipeline to analyze employee and organizational competency profiles accurately.',
+          'Built custom AI productivity tools and workflow automations using Google Apps Script.',
+          'Created executive Looker Studio dashboards tracking yearly KPI performance metrics across head office divisions.'
+        ],
+        tags: ['Large Language Models', 'Google Apps Script', 'Looker Studio', 'Competency Analytics']
+      },
+      {
+        id: 'p2',
+        code: 'TRACK-02 // NAIST THESIS RESEARCH',
+        category: 'llm-nlp',
+        title: 'LLM Summarization & Relation Extraction on Japan’s 2024 Election News',
+        org: 'Nara Institute of Science and Technology (NAIST) — Social Computing Lab',
+        period: '2024 – 2025 · Ikoma, Nara, Japan',
+        summary: 'Undergraduate thesis research conducted in the Social Computing Lab (Informatics Science Division) investigating long-form political news analysis with LLMs.',
+        bullets: [
+          'Researched text summarization and entity relation extraction techniques using state-of-the-art Large Language Models.',
+          'Applied LLMs to parse and structure long-form news articles covering Japan’s 2024 House of Representatives Election.',
+          'Benchmarked Google Gemini models to identify concrete strengths and failure modes in long-context relation extraction.'
+        ],
+        tags: ['LLMs', 'Google Gemini', 'Relation Extraction', 'Text Summarization', 'NAIST']
+      },
+      {
+        id: 'p3',
+        code: 'TRACK-03 // BANGKIT CAPSTONE',
+        category: 'stat-ml',
+        title: 'PodPicks: Spotify API Podcast Recommendation Engine',
+        org: 'Bangkit Academy (Google, Tokopedia, Gojek & Traveloka)',
+        period: '2024 · Machine Learning Cohort',
+        summary: 'Led the capstone project team as Representative to build a personalized podcast discovery application powered by machine learning and Spotify’s API.',
+        bullets: [
+          'Served as Team Representative in a cross-functional Bangkit Academy Capstone team.',
+          'Implemented content and collaborative filtering recommendation models integrated directly with Spotify’s API metadata.',
+          'Completed intensive cohort modules in Optical Character Recognition (OCR), Image Detection, and deep Recommender Systems.'
+        ],
+        tags: ['Recommendation System', 'Spotify API', 'Python ML', 'OCR & Computer Vision']
+      },
+      {
+        id: 'p4',
+        code: 'TRACK-04 // HEALTH TOPIC MODELING',
+        category: 'llm-nlp',
+        title: 'Trending Health Topics Discovery in Indonesia via BERTopic',
+        org: 'Universitas Sebelas Maret (UNS) — Joint Lecturer Research',
+        period: '2024 – 2025 · Surakarta, Indonesia',
+        summary: 'Collaborated on faculty research applying neural topic modeling (BERTopic) to uncover emerging public health discourse in Indonesia.',
+        bullets: [
+          'Preprocessed Indonesian health text corpora and applied transformer-based embeddings with BERTopic.',
+          'Clustered and visualized high-priority public health trends to assist academic policy analysis.',
+          'Evaluated topic coherence and temporal evolution across Indonesian digital media.'
+        ],
+        tags: ['BERTopic', 'Transformer Embeddings', 'Indonesian NLP', 'Health Analytics']
+      },
+      {
+        id: 'p5',
+        code: 'TRACK-05 // MULTILINGUAL NLP',
+        category: 'llm-nlp',
+        title: 'Language Detection (XLM-RoBERTa) & Sentiment Analysis (SVM)',
+        org: 'Universitas Sebelas Maret (UNS)',
+        period: '2023 – 2024 · Course Final Projects',
+        summary: 'Developed and compared fine-tuned cross-lingual transformers and classical margin classifiers for multilingual text classification.',
+        bullets: [
+          'Fine-tuned XLM-RoBERTa for high-accuracy multilingual language identification.',
+          'Engineered TF-IDF features and trained Support Vector Machine (SVM) models for sentiment classification.',
+          'Compared neural vs. statistical decision boundaries across noisy text inputs.'
+        ],
+        tags: ['XLM-RoBERTa', 'Support Vector Machine (SVM)', 'Sentiment Analysis', 'Language Detection']
+      },
+      {
+        id: 'p6',
+        code: 'TRACK-06 // ECONOMETRIC ML',
+        category: 'stat-ml',
+        title: 'Macroeconomic Crisis Detection Using Multilayer Perceptron (MLP)',
+        org: 'Universitas Sebelas Maret (UNS)',
+        period: '2023 – 2025 · Statistical Theory & Econometrics',
+        summary: 'Combined statistical theory with neural network modeling to detect early warning signals of economic crises in crisis-affected nations.',
+        bullets: [
+          'Modeled macroeconomic indicators using a Multilayer Perceptron (MLP) neural network architecture.',
+          'Bridged rigorous statistical theory across economics, politics, and technology datasets.',
+          'Evaluated classification sensitivity for early crisis detection regimes.'
+        ],
+        tags: ['Multilayer Perceptron (MLP)', 'Macroeconomic Indicators', 'Time Series', 'Statistics']
+      },
+      {
+        id: 'p7',
+        code: 'TRACK-07 // RETAIL DIGITIZATION',
+        category: 'data-ops',
+        title: 'MokaPOS Inventory Database & Store Workflow Optimization',
+        org: 'Sinar Agung Toy Store (Family Business)',
+        period: '2026 – Present · Semarang, Central Java',
+        summary: 'Digitized end-to-end store inventory, pricing, and accounting workflows for a high-SKU family retail business using MokaPOS.',
+        bullets: [
+          'Built a structured digital database cataloguing every store item, live stock level, and pricing tier in MokaPOS.',
+          'Streamlined daily business and logistics workflows alongside store accounting operations.',
+          'Balanced operations leadership with independent ML research preparation prior to starting Master’s studies in 2026.'
+        ],
+        tags: ['MokaPOS', 'Database Digitization', 'Operations Management', 'Logistics & Accounting']
+      }
+    ];
+
+    // 2. Journey Timeline Data (Station Stops — Months deleted)
+    const JOURNEY_STOPS = [
+      {
+        stationCode: 'STA-01 // 熊本大学',
+        type: 'research',
+        role: 'Master of Engineering — Computer Science',
+        org: 'Kumamoto University (Kumadai)',
+        orgUrl: 'https://ewww.kumamoto-u.ac.jp/',
+        location: 'Kumamoto, Japan',
+        period: '2026 – Present',
+        badge: 'CURRENT STATION',
+        highlights: [
+          'Pursuing graduate research in Machine Learning, Natural Language Processing, Large Language Models, Social Media Analysis, and Time Series Analysis.'
+        ]
+      },
+      {
+        stationCode: 'STA-02 // 事業運営',
+        type: 'industry',
+        role: 'Operation Manager',
+        org: 'Sinar Agung Toy Store (Family Business)',
+        orgUrl: '',
+        location: 'Semarang, Central Java, Indonesia',
+        period: '2026 – Present',
+        badge: 'OPERATIONS & POS DATA',
+        highlights: [
+          'Optimizing end-to-end store operational workflows and managing accounting.',
+          'Digitizing and monitoring business & logistics data flow using MokaPOS — creating a complete database of every item, stock count, and price.'
+        ]
+      },
+      {
+        stationCode: 'STA-03 // 本社データ分析',
+        type: 'industry',
+        role: 'Performance Management & Data Analyst (Head Office)',
+        org: 'PT Midi Utama Indonesia, Tbk (Kemnaker RI Batch 1)',
+        orgUrl: '',
+        location: 'Tangerang, Banten, Indonesia',
+        period: '2025 – 2026',
+        badge: 'NATIONAL INTERNSHIP',
+        highlights: [
+          'Selected participant in the National Internship Program (Batch 1) by the Ministry of Manpower (Kemnaker RI).',
+          'Designed and developed an end-to-end LLM-powered organizational competency analysis system.',
+          'Built AI tools and workflow automations with Google Apps Script and executive yearly KPI dashboards in Looker Studio.'
+        ]
+      },
+      {
+        stationCode: 'STA-04 // 奈良先端大 (NAIST)',
+        type: 'research',
+        role: 'Research Internship Student — Social Computing Lab',
+        org: 'Nara Institute of Science and Technology (NAIST)',
+        orgUrl: 'https://www.naist.jp/en/',
+        location: 'Ikoma, Nara, Japan',
+        period: '2024 – 2025',
+        badge: 'RESEARCH INTERN',
+        highlights: [
+          'Conducted undergraduate thesis research in the Informatics Science Division (Social Computing Lab).',
+          'Researched text summarization and relation extraction using Large Language Models (LLMs) on Japan’s 2024 House of Representatives Election news.',
+          'Evaluated Google Gemini to identify strengths and weaknesses in long-form relation extraction.'
+        ]
+      },
+      {
+        stationCode: 'STA-05 // BANGKIT ML',
+        type: 'research',
+        role: 'Machine Learning Cohort & Capstone Team Representative',
+        org: 'Bangkit Academy (Google, Tokopedia, Gojek & Traveloka)',
+        orgUrl: '',
+        location: 'Indonesia',
+        period: '2024',
+        badge: 'ML COHORT',
+        highlights: [
+          'Mastered Recommendation Systems, Optical Character Recognition (OCR), and Image Detection.',
+          'Graduated as Team Representative for Capstone Project "PodPicks: Podcast Recommendation" powered by Spotify’s API.'
+        ]
+      },
+      {
+        stationCode: 'STA-06 // 国立セベラス・マレット大学',
+        type: 'research',
+        role: 'Bachelor of Applied Science (BASc) in Statistics',
+        org: 'Universitas Sebelas Maret (UNS)',
+        orgUrl: 'https://uns.ac.id/en/',
+        location: 'Surakarta, Central Java, Indonesia',
+        period: '2021 – 2025',
+        badge: 'B.A.Sc. STATISTICS',
+        highlights: [
+          'Built a rigorous foundation in statistical theory applied across economics, politics, and technology.',
+          'Researched crisis detection using Multilayer Perceptron (MLP) with macroeconomic indicators.',
+          'Developed Language Detection (XLM-RoBERTa), Sentiment Analysis (SVM), and Indonesian Health Topic Modeling (BERTopic).'
+        ]
+      }
+    ];
+
+    // Render Projects Grid
+    const projectsGrid = document.getElementById('projectsGrid');
+    function renderProjects(filter = 'all') {
+      const list = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.category === filter);
+      projectsGrid.innerHTML = list.map(p => `
+        <article class="rei-card rounded-2xl p-4 sm:p-5 flex flex-col justify-between">
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between gap-2 text-[11px] font-mono font-bold">
+              <span class="px-2 py-0.5 rounded rei-subcard">${p.code}</span>
+              <span class="theme-link">● ACTIVE</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-extrabold theme-text-main leading-snug">${p.title}</h3>
+            <p class="text-xs font-bold theme-link">${p.org}</p>
+            <p class="text-xs sm:text-sm theme-text-muted leading-relaxed">${p.summary}</p>
+          </div>
+
+          <div class="pt-4 mt-4 border-t-2 border-dashed border-current/20 space-y-3">
+            <div class="flex flex-wrap gap-1.5">
+              ${p.tags.map(t => `<span class="text-[10px] font-semibold px-2 py-0.5 rounded rei-sandcard">${t}</span>`).join('')}
+            </div>
+            <button type="button" data-project-id="${p.id}" class="inspect-proj-btn w-full rei-btn rei-subcard hover:opacity-90 text-xs font-bold py-2 rounded-lg">
+              🎫 Inspect Research Ticket →
+            </button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // Render Journey Timeline
+    const journeyTimeline = document.getElementById('journeyTimeline');
+    function renderJourney(jfilter = 'all') {
+      const stops = jfilter === 'all' ? JOURNEY_STOPS : JOURNEY_STOPS.filter(s => s.type === jfilter);
+      journeyTimeline.innerHTML = stops.map(s => `
+        <div class="relative group">
+          <!-- Station Node Circle on the Railway Line -->
+          <div class="absolute -left-[35px] sm:-left-[47px] top-5 w-5 h-5 rounded-full bg-rei-sand border-[3px] border-rei-navy shadow-[2px_2px_0px_#0E244D] group-hover:scale-125 transition"></div>
+
+          <div class="rei-card rounded-2xl p-4 sm:p-5 space-y-2">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-current/15 pb-2">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-mono font-bold px-2.5 py-0.5 rounded rei-badge-dark">${s.stationCode}</span>
+                <span class="text-xs font-mono font-bold theme-text-muted">${s.period}</span>
+              </div>
+              <span class="text-[11px] font-mono font-bold px-2.5 py-0.5 rounded rei-sandcard">${s.badge}</span>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 pt-1">
+              <h3 class="text-base sm:text-lg font-extrabold theme-text-main">${s.role}</h3>
+              <span class="text-xs font-semibold theme-link shrink-0">📍 ${s.location}</span>
+            </div>
+
+            <div class="text-xs sm:text-sm font-bold theme-text-muted">
+              ${s.orgUrl ? `<a href="${s.orgUrl}" target="_blank" rel="noopener noreferrer" class="underline theme-link">${s.org} ↗</a>` : s.org}
+            </div>
+
+            <ul class="list-disc list-inside text-xs sm:text-sm theme-text-main space-y-1 pt-1 leading-relaxed">
+              ${s.highlights.map(h => `<li>${h}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Clipboard Helper with Toast
+    function showToast(msg) {
+      const box = document.getElementById('toastBox');
+      const label = document.getElementById('toastMessage');
+      label.textContent = msg;
+      box.classList.remove('hidden');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        box.classList.add('hidden');
+      }, 2800);
+    }
+
+    function copyTextToClipboard(text, message) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast(message)).catch(() => fallbackCopy(text, message));
+      } else {
+        fallbackCopy(text, message);
+      }
+    }
+
+    function fallbackCopy(text, message) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+      showToast(message);
+    }
+
+    // Initialize DOM Listeners
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProjects('all');
+      renderJourney('all');
+
+      // Project Filter Buttons
+      document.querySelectorAll('.proj-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.proj-filter-btn').forEach(b => {
+            b.classList.remove('rei-btn-active');
+            b.classList.add('rei-btn-idle');
+          });
+          btn.classList.remove('rei-btn-idle');
+          btn.classList.add('rei-btn-active');
+          renderProjects(btn.getAttribute('data-filter'));
+        });
+      });
+
+      // Project Modal Delegation
+      const modal = document.getElementById('projectModal');
+      projectsGrid.addEventListener('click', (e) => {
+        const btn = e.target.closest('.inspect-proj-btn');
+        if (!btn) return;
+        const proj = PROJECTS.find(p => p.id === btn.getAttribute('data-project-id'));
+        if (!proj) return;
+        document.getElementById('modalCode').textContent = proj.code;
+        document.getElementById('modalOrg').textContent = proj.org;
+        document.getElementById('modalTitle').textContent = proj.title;
+        document.getElementById('modalPeriod').textContent = proj.period;
+        document.getElementById('modalDesc').textContent = proj.summary;
+        document.getElementById('modalBullets').innerHTML = proj.bullets.map(b => `<li>${b}</li>`).join('');
+        document.getElementById('modalTags').innerHTML = proj.tags.map(t => `<span class="text-xs font-bold px-2.5 py-1 rounded rei-subcard">${t}</span>`).join('');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      });
+
+      document.getElementById('closeModalBtn').addEventListener('click', () => {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      });
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+      });
+
+      // Journey Filter Buttons
+      document.querySelectorAll('.journey-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.journey-filter-btn').forEach(b => {
+            b.classList.remove('rei-btn-active');
+            b.classList.add('rei-btn-idle');
+          });
+          btn.classList.remove('rei-btn-idle');
+          btn.classList.add('rei-btn-active');
+          renderJourney(btn.getAttribute('data-jfilter'));
+        });
+      });
+
+      // Language Greeting Switcher
+      const GREETINGS = {
+        en: '"Hello! I\'m Alvin, currently researching Machine Learning and NLP at Kumamoto University (Kumadai) in Japan. Let\'s collaborate!"',
+        id: '"Halo! Saya Alvin, mahasiswa Master of Engineering di Kumamoto University (Kumadai) dengan fokus riset Machine Learning, NLP, dan LLM. Mari berkolaborasi!"'
+      };
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.lang-btn').forEach(b => {
+            b.classList.remove('rei-btn-active');
+            b.classList.add('rei-btn-idle');
+          });
+          btn.classList.remove('rei-btn-idle');
+          btn.classList.add('rei-btn-active');
+          const lang = btn.getAttribute('data-lang');
+          document.getElementById('langGreetingBox').textContent = GREETINGS[lang] || GREETINGS.en;
+        });
+      });
+
+      // Sky Mode Toggle Control
+      const skyModeBtn = document.getElementById('skyModeBtn');
+      const skyModeLabel = document.getElementById('skyModeLabel');
+      skyModeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('twilight-mode');
+        const isTwilight = document.body.classList.contains('twilight-mode');
+        skyModeLabel.textContent = isTwilight ? '🌆 夕凪' : '☀️ 夏空';
+        showToast(isTwilight ? 'Switched to Twilight Crossing mode' : 'Switched to Midday Cumulonimbus mode');
+      });
+
+      // Mobile Menu Toggle
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', String(!isHidden));
+        mobileMenuBtn.textContent = isHidden ? '☰ Menu' : '✕ Close';
+      });
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenuBtn.setAttribute('aria-expanded', 'false');
+          mobileMenuBtn.textContent = '☰ Menu';
+        });
+      });
+
+      // Copy Buttons
+      document.getElementById('copyEmailHeroBtn').addEventListener('click', () => {
+        copyTextToClipboard('alvinrabani55@gmail.com', 'Email alvinrabani55@gmail.com copied!');
+      });
+      document.querySelectorAll('.copy-trigger').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const val = btn.getAttribute('data-copy');
+          copyTextToClipboard(val, `Copied ${val} to clipboard!`);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
